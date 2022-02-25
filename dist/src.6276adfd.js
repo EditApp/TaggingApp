@@ -32389,6 +32389,16 @@ var __importStar = this && this.__importStar || function (mod) {
   return result;
 };
 
+var __spreadArray = this && this.__spreadArray || function (to, from, pack) {
+  if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+    if (ar || !(i in from)) {
+      if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+      ar[i] = from[i];
+    }
+  }
+  return to.concat(ar || Array.prototype.slice.call(from));
+};
+
 var __importDefault = this && this.__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
     "default": mod
@@ -32406,7 +32416,7 @@ var styled_components_1 = __importDefault(require("styled-components"));
 
 var __1 = require("../");
 
-exports.SvgPlaygroundStyled = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    border: 2px solid black;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 25px;\n    right: 0;\n    ", " {\n      z-index: 3;\n    }\n    ", " {\n      border: 2px solid blue;\n      position: absolute;\n      bottom: 0px;\n    }\n  \n"], ["\n    border: 2px solid black;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 25px;\n    right: 0;\n    ", " {\n      z-index: 3;\n    }\n    ", " {\n      border: 2px solid blue;\n      position: absolute;\n      bottom: 0px;\n    }\n  \n"])), __1.InputStyled, __1.BoxStyled);
+exports.SvgPlaygroundStyled = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    border: 2px solid black;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 25px;\n    right: 0;\n    ", " {\n      z-index: 3;\n    }\n    ", " {\n      border: 2px solid blue;\n      position: absolute;\n      bottom: 0px;\n    }\n"], ["\n    border: 2px solid black;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 25px;\n    right: 0;\n    ", " {\n      z-index: 3;\n    }\n    ", " {\n      border: 2px solid blue;\n      position: absolute;\n      bottom: 0px;\n    }\n"])), __1.InputStyled, __1.BoxStyled);
 var SvgStyled = styled_components_1.default.svg(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  border: 5px solid red;\n  position: relative;\n  z-index: 2;\n cursor: crosshair;\n  \n"], ["\n  border: 5px solid red;\n  position: relative;\n  z-index: 2;\n cursor: crosshair;\n  \n"])));
 
 var ComputeRect = function ComputeRect(_a) {
@@ -32484,12 +32494,17 @@ var SvgPlayground = function SvgPlayground(_a) {
 
   var _o = (0, react_1.useState)(""),
       rectText = _o[0],
-      setRectText = _o[1]; //Mousedown
+      setRectText = _o[1];
+
+  var _p = (0, react_1.useState)([{}]),
+      tags = _p[0],
+      setTags = _p[1]; //Mousedown
 
 
   (_b = svg === null || svg === void 0 ? void 0 : svg.current) === null || _b === void 0 ? void 0 : _b.onmousedown = function (_a) {
     var x = _a.x,
-        y = _a.y; // console.log("x", x)
+        y = _a.y;
+    console.log("onmousedown"); // console.log("x", x)
     // console.log("y", y)
 
     setLastMousex(x);
@@ -32500,24 +32515,25 @@ var SvgPlayground = function SvgPlayground(_a) {
   }; //Mouseup
 
   (_c = svg === null || svg === void 0 ? void 0 : svg.current) === null || _c === void 0 ? void 0 : _c.onmouseup = function () {
+    console.log("onmouseup");
     setMouseDown(false);
   }; //Mousemove
 
   (_d = svg === null || svg === void 0 ? void 0 : svg.current) === null || _d === void 0 ? void 0 : _d.onmousemove = function (_a) {
     var x = _a.x,
         y = _a.y;
-    setMousex(parseInt(x));
-    setMousey(parseInt(y)); // console.log("mousedown", mouseDown)
 
     if (mouseDown) {
+      setMousex(parseInt(x));
+      setMousey(parseInt(y));
+      console.log("onmousemove");
       setRectWidth(Math.abs(mousex - lastMousex));
       setRectHeight(Math.abs(mousex - lastMousex)); /// console.log("x", x)
       ///console.log("y", y)
       ///  console.log("onmousemove width", rectWidth)
       ///   console.log("onmousemove height", rectHeight)
     }
-  }; //console.log('svg', svg)
-  //console.log('childNodes', svg?.childNodes)
+  };
 
   var tagText = function tagText(e) {
     setRectText(e.target.value);
@@ -32529,32 +32545,24 @@ var SvgPlayground = function SvgPlayground(_a) {
 
   var changeWidth = function changeWidth(e) {
     setRectWidth("".concat(e.target.value, "px"));
-  }; //fake
+  };
 
+  var setTagObjects = function setTagObjects() {
+    console.log('set Object');
+    var newTagElement = {
+      rectX: "".concat(lastMousex),
+      rectY: "".concat(lastMousey),
+      width: "".concat(rectWidth),
+      height: "".concat(rectHeight),
+      fill: "none",
+      stroke: "black",
+      strokeWidth: 5,
+      textLabel: rectText
+    };
+    setTags(__spreadArray(__spreadArray([], tags, true), [newTagElement], false));
+    console.log("TAGS", tags);
+  };
 
-  var tagDataHardc = [{
-    rectX: "120",
-    rectY: "0",
-    width: "100",
-    height: "100",
-    fill: "none",
-    stroke: "black",
-    strokeWidth: 5,
-    textX: "120",
-    textY: "20",
-    textLabel: "toto"
-  }, {
-    rectX: "150",
-    rectY: "200",
-    width: "100",
-    height: "100",
-    fill: "none",
-    stroke: "black",
-    strokeWidth: 5,
-    textX: "150",
-    textY: "220",
-    textLabel: "toto"
-  }];
   return react_1.default.createElement(exports.SvgPlaygroundStyled, {
     className: "SvgPlayground ".concat(className)
   }, react_1.default.createElement(__1.Box, null, react_1.default.createElement(__1.Input, {
@@ -32569,6 +32577,10 @@ var SvgPlayground = function SvgPlayground(_a) {
     type: "number",
     position: "relative",
     onChange: changeWidth
+  }), react_1.default.createElement(__1.Input, {
+    type: "submit",
+    position: "relative",
+    onClick: setTagObjects
   })), react_1.default.createElement(SvgStyled, {
     ref: svgRef,
     id: "svg",
@@ -32583,6 +32595,18 @@ var SvgPlayground = function SvgPlayground(_a) {
     stroke: "black",
     strokeWidth: 5,
     textLabel: rectText
+  }), tags.map(function (item) {
+    return react_1.default.createElement(ComputeRect, {
+      key: item,
+      rectX: item.rectX,
+      rectY: item.rectY,
+      width: item.width,
+      height: item.height,
+      fill: "none",
+      stroke: "black",
+      strokeWidth: 5,
+      textLabel: item.textLabel
+    });
   })));
 };
 
@@ -33256,7 +33280,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50420" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55801" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

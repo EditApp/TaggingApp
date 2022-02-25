@@ -20,7 +20,6 @@ export const SvgPlaygroundStyled = styled.div<SvgPlaygroundStyles>`
       position: absolute;
       bottom: 0px;
     }
-  
 `
 
 const SvgStyled = styled.svg<SvgPlaygroundStyles>`
@@ -37,16 +36,16 @@ interface ISvgPlayground {
 }
 
 interface IRect {
-   rectX? :string
-    rectY? : string
-    width? : any
-    height? : any
-    fill? : string
-    stroke? : string
-    strokeWidth?: number
-    textX? :any
-    textY? :any
-    textLabel?:string
+  rectX? :string
+  rectY? : string
+  width? : any
+  height? : any
+  fill? : string
+  stroke? : string
+  strokeWidth?: number
+  textX? :any
+  textY? :any
+  textLabel?:string
 }
 
 const ComputeRect: FC<IRect> = ({ 
@@ -59,7 +58,7 @@ const ComputeRect: FC<IRect> = ({
   strokeWidth,
   textX,
   textY,
-  textLabel,
+  textLabel
 
  }) => {
 
@@ -84,8 +83,6 @@ const ComputeRect: FC<IRect> = ({
 }
 
 const SvgPlayground: FC<ISvgPlayground> = ({ children,className }) => {
-
-
   const svgRef = useRef(null);
   //create rectangle set (tagData)
   const [tagData, setTagData] = useState([{}])
@@ -99,9 +96,11 @@ const SvgPlayground: FC<ISvgPlayground> = ({ children,className }) => {
   let [mousey, setMousey] = useState(0)
   let [mouseDown, setMouseDown] = useState(false)
   let [rectText, setRectText] = useState("")
+  const [tags, setTags] = useState([{}])
 
   //Mousedown
   svg?.current?.onmousedown = ({x, y}) => {
+  console.log("onmousedown")
   // console.log("x", x)
   // console.log("y", y)
     setLastMousex(x)
@@ -115,6 +114,7 @@ const SvgPlayground: FC<ISvgPlayground> = ({ children,className }) => {
 
   //Mouseup
   svg?.current?.onmouseup = () => {
+      console.log("onmouseup")
     setMouseDown(false)
   }
 
@@ -125,13 +125,12 @@ const SvgPlayground: FC<ISvgPlayground> = ({ children,className }) => {
     x,
     y
   }) => {
-    setMousex(parseInt(x))
-    setMousey(parseInt(y))
-    // console.log("mousedown", mouseDown)
-
     if (mouseDown) {
+      setMousex(parseInt(x))
+      setMousey(parseInt(y))
+        console.log("onmousemove")
 
-        setRectWidth(Math.abs(mousex - lastMousex))
+      setRectWidth(Math.abs(mousex - lastMousex))
       setRectHeight(Math.abs(mousex - lastMousex))
 
     /// console.log("x", x)
@@ -140,9 +139,6 @@ const SvgPlayground: FC<ISvgPlayground> = ({ children,className }) => {
     ///   console.log("onmousemove height", rectHeight)
     }
   };
-
-  //console.log('svg', svg)
-  //console.log('childNodes', svg?.childNodes)
 
   const tagText=(e:any)=>{
     setRectText(e.target.value)
@@ -153,35 +149,21 @@ const SvgPlayground: FC<ISvgPlayground> = ({ children,className }) => {
   const changeWidth=(e:any)=>{
     setRectWidth(`${e.target.value}px`)
   })
-  //fake
-  const tagDataHardc = [
-    {
-      rectX : "120",
-      rectY : "0",
-      width : "100",
-      height : "100",
-      fill : "none",
-      stroke :"black",
-      strokeWidth: 5,
-      textX : "120",
-      textY : "20",
-      textLabel: "toto"
-    },
-    {
-      rectX : "150",
-      rectY : "200",
-      width : "100",
-      height : "100",
+  const setTagObjects=()=>{
+      console.log('set Object')
+      const newTagElement = {
+        rectX : `${lastMousex}`,
+        rectY : `${lastMousey}`,
+        width : `${rectWidth}`,
+        height : `${rectHeight}`,
         fill : "none",
-      stroke :"black",
-      strokeWidth: 5,
-      textX : "150",
-      textY : "220",
-      textLabel: "toto"
-    },
-
-  ]
-
+        stroke : "black",
+        strokeWidth: 5,
+        textLabel : rectText
+      }
+    setTags([...tags, newTagElement])
+    console.log("TAGS", tags)
+  }), 
 
 
   return <SvgPlaygroundStyled 
@@ -191,6 +173,7 @@ const SvgPlayground: FC<ISvgPlayground> = ({ children,className }) => {
       <Input type="text" position="relative"  onChange={tagText} />
       <Input type="number" position="relative"  onChange={changeHeight} />
       <Input type="number" position="relative"  onChange={changeWidth} />
+      <Input type="submit" position="relative"  onClick={setTagObjects} />
     </Box>
     <SvgStyled ref={svgRef} id="svg" width="800" height="300">
         <ComputeRect 
@@ -202,6 +185,19 @@ const SvgPlayground: FC<ISvgPlayground> = ({ children,className }) => {
           strokeWidth={5}
           textLabel={rectText}
         />
+        {tags.map((item:any) => {
+          return <ComputeRect 
+            key={item}
+            rectX={item.rectX}
+            rectY={item.rectY}
+            width={item.width} 
+            height={item.height}
+            fill="none"
+            stroke="black"
+            strokeWidth={5}
+            textLabel={item.textLabel}
+        />
+        }}
     </SvgStyled>
   </SvgPlaygroundStyled>
 }
