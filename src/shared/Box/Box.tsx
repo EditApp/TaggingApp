@@ -15,7 +15,6 @@ interface BoxStyles {
 
 export const BoxStyled = styled.div<BoxStyles>`
   position: relative;
-  border: 1px solid red;
   min-width: 20px;
   background-size: cover;
   background-repeat: no-repeat;

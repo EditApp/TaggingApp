@@ -5,7 +5,6 @@ interface ContentStyles {
 }
 
 export const ContentStyled = styled.section<ContentStyles>`
-  border: 1px solid green;
   width: 100%;
 `
 

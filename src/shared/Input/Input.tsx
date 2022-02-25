@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
+import { colors } from '../../appSettings/stylesSettings'
 
 interface InputStyles {
   position?: string
@@ -9,7 +10,7 @@ interface InputStyles {
 
 
 export const InputStyled = styled.input<InputStyles>`
-  border: 1px solid pink; 
+  border: 1px solid ${colors.grayClear}; 
   position: ${props => props.position};
   top: ${props => props.top};
   left: ${props => props.left};

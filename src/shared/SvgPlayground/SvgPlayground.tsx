@@ -1,5 +1,7 @@
 import React, { FC, ReactNode, useState, useEffect , useRef} from 'react'
+import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components'
+import { colors } from '../../appSettings/stylesSettings'
 import {Box, BoxStyled, Input, InputStyled} from '../'
 
 
@@ -16,19 +18,26 @@ export const SvgPlaygroundStyled = styled.div<SvgPlaygroundStyles>`
       z-index: 3;
     }
     ${BoxStyled} {
-      border: 2px solid blue;
       position: absolute;
       bottom: 0px;
     }
 `
 
 const SvgStyled = styled.svg<SvgPlaygroundStyles>`
-  border: 5px solid red;
   position: relative;
   z-index: 2;
- cursor: crosshair;
+  cursor: crosshair;
+  width: 100%;
+  height: 350px;
   
 `
+
+const RectStyled = styled.g<SvgPlaygroundStyles>`
+ 
+
+  
+`
+
 
 interface ISvgPlayground {
   children: ReactNode
@@ -36,6 +45,7 @@ interface ISvgPlayground {
 }
 
 interface IRect {
+  id: string
   rectX? :string
   rectY? : string
   width? : any
@@ -49,6 +59,7 @@ interface IRect {
 }
 
 const ComputeRect: FC<IRect> = ({ 
+  id,
   rectX,
   rectY,
   width,
@@ -65,21 +76,24 @@ const ComputeRect: FC<IRect> = ({
   const rectRef = useRef(null);
    //todo perf
   //console.log("rectRef", rectRef?.current)
-  return <g>
+  return <RectStyled id={id}>
+
     <rect ref={rectRef} 
         x={rectX} y={rectY} 
         width={width} 
         height={height} fill={fill} 
         stroke={stroke} 
+        strokeOpacity={'70%'}
         strokeWidth={strokeWidth} 
       />
       <text 
-        x={rectX} y={rectY} 
+        x={rectX - 5} y={rectY - 5} 
         fontFamily="Verdana" 
         fontSize="0,9rem" 
-        fill="blue">{textLabel}
+        fill={colors.blue}
+       >{textLabel}
       </text>
-  </g>
+  </RectStyled>
 }
 
 const SvgPlayground: FC<ISvgPlayground> = ({ children,className }) => {
@@ -111,32 +125,21 @@ const SvgPlayground: FC<ISvgPlayground> = ({ children,className }) => {
       
   }
 
-
   //Mouseup
   svg?.current?.onmouseup = () => {
       console.log("onmouseup")
     setMouseDown(false)
   }
-
-
-
   //Mousemove
-  svg?.current?.onmousemove = ({
-    x,
-    y
-  }) => {
+  //TODO add types to arguments
+  svg?.current?.onmousemove = ({x,y}) => {
     if (mouseDown) {
       setMousex(parseInt(x))
       setMousey(parseInt(y))
         console.log("onmousemove")
-
       setRectWidth(Math.abs(mousex - lastMousex))
       setRectHeight(Math.abs(mousex - lastMousex))
 
-    /// console.log("x", x)
-    ///console.log("y", y)
-    ///  console.log("onmousemove width", rectWidth)
-    ///   console.log("onmousemove height", rectHeight)
     }
   };
 
@@ -152,17 +155,18 @@ const SvgPlayground: FC<ISvgPlayground> = ({ children,className }) => {
   const setTagObjects=()=>{
       console.log('set Object')
       const newTagElement = {
+        id: uuidv4(),
         rectX : `${lastMousex}`,
         rectY : `${lastMousey}`,
         width : `${rectWidth}`,
         height : `${rectHeight}`,
         fill : "none",
-        stroke : "black",
-        strokeWidth: 5,
+        stroke : `${colors.gray}`,
+        strokeWidth: 8,
         textLabel : rectText
       }
     setTags([...tags, newTagElement])
-    console.log("TAGS", tags)
+    setRectText("")
   }), 
 
 
@@ -175,29 +179,30 @@ const SvgPlayground: FC<ISvgPlayground> = ({ children,className }) => {
       <Input type="number" position="relative"  onChange={changeWidth} />
       <Input type="submit" position="relative"  onClick={setTagObjects} />
     </Box>
-    <SvgStyled ref={svgRef} id="svg" width="800" height="300">
+    <SvgStyled ref={svgRef} id="svg" >
         <ComputeRect 
           rectX={`${lastMousex}`}
           rectY={`${lastMousey}`}
           width={`${rectWidth}`} height={`${rectHeight}`}
           fill="none"
-          stroke="black"
-          strokeWidth={5}
+          stroke={`${colors.gray}`}
+          strokeWidth={8}
           textLabel={rectText}
         />
         {tags.map((item:any) => {
+          const {id, rectX, rectY, width, height, fill, stroke, strokeWidth, textLabel} = item
           return <ComputeRect 
-            key={item}
-            rectX={item.rectX}
-            rectY={item.rectY}
-            width={item.width} 
-            height={item.height}
-            fill="none"
-            stroke="black"
-            strokeWidth={5}
-            textLabel={item.textLabel}
+            key={id}
+            rectX={rectX}
+            rectY={rectY}
+            width={width} 
+            height={height}
+            fill={fill}
+            stroke={stroke}
+            strokeWidth={strokeWidth}
+            textLabel={textLabel}
         />
-        }}
+        })}
     </SvgStyled>
   </SvgPlaygroundStyled>
 }

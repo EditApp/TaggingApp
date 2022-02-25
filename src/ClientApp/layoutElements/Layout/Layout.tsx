@@ -5,7 +5,6 @@ interface LayoutStyles {
 }
 
 export const LayoutStyled = styled.section<LayoutStyles>`
-  border: 1px solid green;
   display: flex;
 `
 

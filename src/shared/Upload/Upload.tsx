@@ -4,7 +4,6 @@ import {Input} from '../'
 interface UploadStyles {}
 
 const UploadStyled = styled.div<UploadStyles>`
-  border: 1px solid red; 
 `
 interface IUpload {
   type: string

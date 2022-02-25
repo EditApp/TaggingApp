@@ -4,7 +4,6 @@ import styled from 'styled-components'
 interface ComponentStyles {}
 
 export const ComponentStyled = styled.section<ComponentStyles>`
-  border: 1px solid red;
   
 `
 interface IComponent {

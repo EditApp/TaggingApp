@@ -1,4 +1,10 @@
 import React, {useState, useEffect} from "react"
+import { BrowserRouter as Router } from 'react-router-dom'
+import { ThemeProvider } from 'styled-components'
+// style
+import GlobalStyle from './appSettings/globalStyle'
+import ResetCss from './appSettings/resetCss'
+
 import {Box, Upload, Image,Input, Canvas, SvgPlayground} from './shared'
 import AppLayout from './ClientApp/AppLayout/AppLayout'
 import { convertBase64 } from './helpers/convertBase64'
@@ -20,7 +26,7 @@ export function App() {
     //console.log("ev", e.target.files)
     const file = e.target.files[0]
     const base64 = await convertBase64(file)
-    //console.log("base64", base64)
+    console.log("base64", base64)
 
      
     //set format base 64 dans state du composant
@@ -38,27 +44,33 @@ export function App() {
     return
   }
 
-  return <AppLayout>
-    <Box className="input" borderRadius="15px" minHeight="300px">
-      {/*baseImg && <SvgPlayground></SvgPlayground>*/}
-      {<SvgPlayground></SvgPlayground>}
-      <Upload type="file" onChange={(e)=>{
-        uploadImage(e)
-      }}>
-        <Image src={baseImg} height="350px"/>
-      </Upload>
-    </Box>
-      <Input type="submit" value="Convertir" 
-        onClick={()=>{
-          convertToJson(baseImg)
-        }}
-      />
-    <Box className="result" borderRadius="0px" minHeight="300px">
-      <Image 
-        src={jsonFormat?.base64} 
-        height="350px">
-      </Image>
-    </Box>
-  </AppLayout>
+  return  <ThemeProvider theme={{ mode: 'dark' }}>
+    <ResetCss />
+    <GlobalStyle />
+    <Router>      
+      <AppLayout>
+        <Box className="input" borderRadius="15px" minHeight="300px">
+          {/*baseImg && <SvgPlayground></SvgPlayground>*/}
+          {<SvgPlayground></SvgPlayground>}
+          <Upload type="file" onChange={(e)=>{
+            uploadImage(e)
+          }}>
+            <Image src={baseImg} height="350px"/>
+          </Upload>
+        </Box>
+          <Input type="submit" value="Convertir" 
+            onClick={()=>{
+              convertToJson(baseImg)
+            }}
+          />
+        <Box className="result" borderRadius="0px" minHeight="300px">
+          <Image 
+            src={jsonFormat?.base64} 
+            height="350px">
+          </Image>
+        </Box>
+      </AppLayout>
+    </Router>
+  </ThemeProvider>
 
 }
