@@ -36429,28 +36429,31 @@ var convertBase64 = function convertBase64(file) {
 };
 
 exports.convertBase64 = convertBase64;
+},{}],"../../node_modules/parcel-bundler/src/builtins/_empty.js":[function(require,module,exports) {
+
 },{}],"../helpers/saveDataToJson.ts":[function(require,module,exports) {
-"use strict"; //const fs = require('fs')
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.saveDataToJson = void 0;
 
+var fs = require('fs');
+
 var saveDataToJson = function saveDataToJson(data) {
   var finished = function finished(error) {
     if (error) {
-      //console.log("error", error)
       return;
     }
   };
 
-  var jsonData = JSON.stringify(data, null, 2); //TODO to save data = needs live server
+  var jsonData = JSON.stringify(data, null, 2); //TODO needs node and server ()
   //fs.writeFile('image.json', jsonData, finished)
 };
 
 exports.saveDataToJson = saveDataToJson;
-},{}],"../App.tsx":[function(require,module,exports) {
+},{"fs":"../../node_modules/parcel-bundler/src/builtins/_empty.js"}],"../App.tsx":[function(require,module,exports) {
 "use strict";
 
 var __makeTemplateObject = this && this.__makeTemplateObject || function (cooked, raw) {
@@ -36904,7 +36907,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53846" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54827" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
