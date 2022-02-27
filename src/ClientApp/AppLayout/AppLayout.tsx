@@ -8,13 +8,10 @@ interface AppLayoutStyles {
 }
 
 export const AppLayoutStyled = styled.section<AppLayoutStyles>`
-  border: 2px solid red;
+  //border: 2px solid red;
   position: relative;
-  ${ImageStyled} {
-    position: absolute;
-    width: 100%;
-    z-index: -1;
-  }
+  height: 100%;
+ 
 `
 
 interface IAppLayout {
@@ -26,7 +23,6 @@ const AppLayout: FC<IAppLayout> = ({ children, className }) =>
   <AppLayoutStyled
     className={`appLayout ${className}`}
   >
-   <Image src={BgImg} opacity="0.2">
     <Layout>
     {/*<Menu></Menu>*/}
       <Content>

@@ -2,13 +2,13 @@ import React, { FC, ReactNode, useState, useEffect , useRef} from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components'
 import { colors } from '../../appSettings/stylesSettings'
-import {Box, BoxStyled, Input, InputStyled} from '../'
+import {Box, BoxStyled, Input, InputStyled, ComputeRect, Fieldset} from '../'
 
 
 interface SvgPlaygroundStyles {}
 
 export const SvgPlaygroundStyled = styled.div<SvgPlaygroundStyles>`
-    border: 2px solid black;
+//border: 3px solid green;
     position: absolute;
     top: 0;
     left: 0;
@@ -19,29 +19,24 @@ export const SvgPlaygroundStyled = styled.div<SvgPlaygroundStyles>`
     }
     ${BoxStyled} {
       position: absolute;
-      bottom: 0px;
+      bottom: 25px;
     }
 `
 
 const SvgStyled = styled.svg<SvgPlaygroundStyles>`
+  //border: 3px solid red;
   position: relative;
   z-index: 2;
   cursor: crosshair;
   width: 100%;
-  height: 350px;
+  height: 100%;
+  max-height: 450px;
   
 `
 
-const RectStyled = styled.g<SvgPlaygroundStyles>`
- 
-
-  
-`
 
 
 interface ISvgPlayground {
-  children: ReactNode
-  className?: string
 }
 
 interface IRect {
@@ -58,49 +53,12 @@ interface IRect {
   textLabel?:string
 }
 
-const ComputeRect: FC<IRect> = ({ 
-  id,
-  rectX,
-  rectY,
-  width,
-  height,
-  fill,
-  stroke,
-  strokeWidth,
-  textX,
-  textY,
-  textLabel
 
- }) => {
 
-  const rectRef = useRef(null);
-   //todo perf
-  //console.log("rectRef", rectRef?.current)
-  return <RectStyled id={id}>
-
-    <rect ref={rectRef} 
-        x={rectX} y={rectY} 
-        width={width} 
-        height={height} fill={fill} 
-        stroke={stroke} 
-        strokeOpacity={'70%'}
-        strokeWidth={strokeWidth} 
-      />
-      <text 
-        x={rectX - 5} y={rectY - 5} 
-        fontFamily="Verdana" 
-        fontSize="0,9rem" 
-        fill={colors.blue}
-       >{textLabel}
-      </text>
-  </RectStyled>
-}
-
-const SvgPlayground: FC<ISvgPlayground> = ({ children,className }) => {
+function useSvg() {
   const svgRef = useRef(null);
-  //create rectangle set (tagData)
-  const [tagData, setTagData] = useState([{}])
   const svg = svgRef
+    console.log("svg", svg)
   //state
   let [rectWidth, setRectWidth] = useState(0)
   let [rectHeight, setRectHeight] = useState(0)
@@ -115,7 +73,7 @@ const SvgPlayground: FC<ISvgPlayground> = ({ children,className }) => {
   //Mousedown
   svg?.current?.onmousedown = ({x, y}) => {
   console.log("onmousedown")
-  // console.log("x", x)
+  console.log("x", x)
   // console.log("y", y)
     setLastMousex(x)
     setLastMousey(y)
@@ -139,7 +97,6 @@ const SvgPlayground: FC<ISvgPlayground> = ({ children,className }) => {
         console.log("onmousemove")
       setRectWidth(Math.abs(mousex - lastMousex))
       setRectHeight(Math.abs(mousex - lastMousex))
-
     }
   };
 
@@ -166,18 +123,24 @@ const SvgPlayground: FC<ISvgPlayground> = ({ children,className }) => {
         textLabel : rectText
       }
     setTags([...tags, newTagElement])
+    //console.log("tags", tags)
     setRectText("")
   }), 
 
 
-  return <SvgPlaygroundStyled 
-    className={`SvgPlayground ${className}`}
-  >
+  return {
+    tags,
+    svgPlayground: (
+    <SvgPlaygroundStyled 
+    className={`SvgPlayground`}
+    >
     <Box>
-      <Input type="text" position="relative"  onChange={tagText} />
-      <Input type="number" position="relative"  onChange={changeHeight} />
-      <Input type="number" position="relative"  onChange={changeWidth} />
-      <Input type="submit" position="relative"  onClick={setTagObjects} />
+      <Fieldset legend="Ajoutez un tag">
+        <Input label="Ajoutez un titre" type="text" position="relative"  onChange={tagText} />
+        <Input label="Changez la hauteur" type="number" position="relative"  onChange={changeHeight} />
+        <Input label="Changez la largeur" type="number" position="relative"  onChange={changeWidth} />
+        <Input type="submit" value="OK" position="relative"  onClick={setTagObjects} />
+      </Fieldset>
     </Box>
     <SvgStyled ref={svgRef} id="svg" >
         <ComputeRect 
@@ -205,10 +168,11 @@ const SvgPlayground: FC<ISvgPlayground> = ({ children,className }) => {
         })}
     </SvgStyled>
   </SvgPlaygroundStyled>
+  )}
 }
 
 
-export default SvgPlayground
+export default useSvg
 
 
 //objectreact

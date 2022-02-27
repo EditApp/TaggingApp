@@ -10,7 +10,8 @@ interface BoxStyles {
   height?: string
   width?: string
   maxWidth?: string
-  mini?: boolean
+  flex?: boolean
+  injectedStyles?: any
 }
 
 export const BoxStyled = styled.div<BoxStyles>`
@@ -18,6 +19,7 @@ export const BoxStyled = styled.div<BoxStyles>`
   min-width: 20px;
   background-size: cover;
   background-repeat: no-repeat;
+  display: ${props => props.flex ? "flex" : "block"};
   padding: ${props => props.padding};
   margin: ${props =>  props.margin};
   border-radius: ${props =>  props.borderRadius};
@@ -27,6 +29,8 @@ export const BoxStyled = styled.div<BoxStyles>`
   min-height: ${props => props.minHeight};
   width: ${props => props.width};
   max-width: ${props => props.maxWidth};
+  overflow:hidden;
+  ${props => props.injectedStyles};
 `
 
 interface IBox {
@@ -38,11 +42,13 @@ interface IBox {
   height?: string
   minHeight?: strig
   width?: string
+  flex?: boolean
   maxWidth?: string
+  injectedStyles?: any
   className?: string
 }
 
-const Box: FC<IBox> = ({ children,  padding, margin,  bgColor,  bgImage, borderRadius,  height,  minHeight, width,  maxWidth,  className }) =>
+const Box: FC<IBox> = ({ children,  padding, margin,  bgColor,  bgImage, borderRadius,  height,  minHeight, width, flex, maxWidth, injectedStyles, className }) =>
   <BoxStyled
     padding={padding}
     margin={margin}
@@ -52,7 +58,9 @@ const Box: FC<IBox> = ({ children,  padding, margin,  bgColor,  bgImage, borderR
     height={height}
     minHeight={minHeight}
     width={width}
+    flex={flex}
     maxWidth={maxWidth}
+    injectedStyles={injectedStyles}
     className={`box ${className}`}
   >
     {children}
