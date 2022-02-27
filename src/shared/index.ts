@@ -3,7 +3,6 @@ import Upload from './Upload/Upload'
 import Input, { InputStyled, InputBoxStyled } from './Input/Input'
 import Fieldset, { FieldsetStyled } from './Fieldset/Fieldset'
 import Image , { ImageStyled } from './Image/Image'
-//import SvgPlayground from './SvgPlayground/SvgPlayground'
 import SvgPlayground, { SvgPlaygroundStyled } from './SvgPlayground/useSvg'
 import ComputeRect from './ComputeRect/ComputeRect'
 

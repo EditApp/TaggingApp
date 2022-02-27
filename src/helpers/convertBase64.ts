@@ -1,6 +1,6 @@
 //conversione en base 64
-export const convertBase64=(file:any)=>{
-  return new Promise((resolve, reject)=>{
+export const convertBase64 = (file: any) => {
+  return new Promise((resolve, reject) => {
     //Filereader objet permettant de lire le contenu des fichiers
     const fileReader = new FileReader()
     //lecture de contenu :
@@ -10,7 +10,7 @@ export const convertBase64=(file:any)=>{
     fileReader.onload = ()=>{
       resolve(fileReader.result)
     }
-    fileReader.onerror = (error) => {
+    fileReader.onerror = (error: any) => {
       reject(error)
     }
   })

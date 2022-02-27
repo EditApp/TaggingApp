@@ -15,20 +15,19 @@ const UploadStyled = styled.div<UploadStyles>`
   padding-bottom: 70px;
   ${InputBoxStyled} {
     > div {
-    width: 100%;
-    position: absolute;
-    bottom: 0px;
-    background-color: ${colors.grayClear};
-    border-top: 2px solid ${colors.cherzBlue};
-    margin-bottom: 0;
-    &.image {
-      background-color: ${colors.white};
-      border-top: 0px solid;
-      position: relative;
-      width: calc(100% - 40px);
+      width: 100%;
+      position: absolute;
+      bottom: 0px;
+      background-color: ${colors.grayClear};
+      border-top: 2px solid ${colors.cherzBlue};
+      margin-bottom: 0;
+      &.image {
+        background-color: ${colors.white};
+        border-top: 0px solid;
+        position: relative;
+        width: calc(100% - 40px);
+      }
     }
-  }
-
   }
 `
 interface IUpload {
@@ -40,13 +39,9 @@ interface IUpload {
 }
 
 const Upload: FC<IUpload> = ({ children, type, label, className, onChange }) =>
-  <UploadStyled
-    className={`upload ${className}`}
-  > 
-  {children}
-   <Input label={label} type={type} onChange={onChange}/>
-
-   
+  <UploadStyled className={`upload ${className}`}> 
+    {children}
+    <Input label={label} type={type} onChange={onChange}/>
   </UploadStyled>
 
 export default Upload

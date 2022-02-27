@@ -14,8 +14,6 @@ import { saveDataToJson } from './helpers/saveDataToJson'
 import { colors } from './appSettings/stylesSettings'
 import { shadows } from './appSettings/cssVariables'
 
-
-//context for tags
 import useSvg from './shared/SvgPlayground/useSvg'
 
 const CenteredButton = styled.div`
@@ -27,14 +25,12 @@ const CenteredButton = styled.div`
   }
 `
 const SvgStyled = styled.svg<SvgPlaygroundStyles>`
-  //border: 3px solid red;
   position: relative;
   z-index: 2;
   cursor: crosshair;
   width: 100%;
   height: 100%;
   max-height: 450px;
-  
 `
 
 export function App() {
@@ -63,16 +59,16 @@ export function App() {
   const convertToJson = (base64format)=>{
     const tagsData = tags.map(item => {
       return {
-          id: item.id,
-          name: item.textLabel,
-          xPos: item.rectX, 
-          yPos: item.rectY, 
-          width: item.width, 
-          height: item.height, 
-          fill: item.fill, 
-          stroke: item.stroke, 
-          strWidth: item.strokeWidth
-        }
+        id: item.id,
+        name: item.textLabel,
+        xPos: item.rectX, 
+        yPos: item.rectY, 
+        width: item.width, 
+        height: item.height, 
+        fill: item.fill, 
+        stroke: item.stroke, 
+        strWidth: item.strokeWidth
+      }
     })
     if(base64format) {
       setJsonFormat({
@@ -80,18 +76,15 @@ export function App() {
         base64: baseImg,
         tags: tagsData
       })
-          //console.log("convertToJson jsonFormat state", jsonFormat)
-
+        //console.log("convertToJson jsonFormat state", jsonFormat)
       saveDataToJson(jsonFormat)
     }
     return
   }
 
-  
-
-  return   <ThemeProvider theme={{ mode: 'dark' }}>
-      <ResetCss />
-      <GlobalStyle />
+  return <ThemeProvider theme={{ mode: 'dark' }}>
+    <ResetCss />
+    <GlobalStyle />
       <Router>      
         <AppLayout>
           <Box 
@@ -101,9 +94,7 @@ export function App() {
             borderRadius="15px" 
             minHeight="300px"
           >
-
             {baseImg && svgPlayground}
-            
             <Box 
               width="100%"
               maxWidth="600px"
@@ -128,52 +119,48 @@ export function App() {
             />
           </CenteredButton>
            
-          {jsonFormat &&    <Box 
+          {jsonFormat && <Box 
             className="input" 
             width="100%"
             margin="0 auto"
             borderRadius="15px" 
             minHeight="300px"
           >
-         <Box 
+            <Box 
               width="100%"
               margin="20px auto"
               minHeight="450px">
-
-            {console.log("TAGS:", {...{tags}})}
-            {console.log("JSON FOSM", jsonFormat?.tags)}
-            <SvgPlaygroundStyled>
-              <SvgStyled>
-                {jsonFormat?.tags?.map((item:any) => {
-                  console.log("ITEM", item)
-                  const {id, xPos, yPos, width, height, fill, stroke, strokeWidth, textLabel} = item
-                  return <ComputeRect 
-                    key={id}
-                    rectX={xPos}
-                    rectY={yPos}
-                    width={width} 
-                    height={height}
-                    fill={fill}
-                    stroke={stroke}
-                    strokeWidth={strokeWidth}
-                    textLabel={textLabel}
-                  />
-                })}
-              </SvgStyled>
-            </SvgPlaygroundStyled>
-            <Image 
-              withBorder
-              src={jsonFormat?.base64} 
-              opacity={baseImg ? "1" : "0"}
-              maxWidth="520px"
-              >
-            </Image>
-          </Box>
-          </Box>
-}
-
+              {console.log("TAGS:", {...{tags}})}
+              {console.log("JSON", jsonFormat?.tags)}
+              <SvgPlaygroundStyled>
+                <SvgStyled>
+                  {jsonFormat?.tags?.map((item:any) => {
+                    console.log("ITEM", item)
+                    const {id, xPos, yPos, width, height, fill, stroke, strokeWidth, textLabel} = item
+                    return <ComputeRect 
+                      key={id}
+                      rectX={xPos}
+                      rectY={yPos}
+                      width={width} 
+                      height={height}
+                      fill={fill}
+                      stroke={stroke}
+                      strokeWidth={strokeWidth}
+                      textLabel={textLabel}
+                    />
+                  })}
+                </SvgStyled>
+              </SvgPlaygroundStyled>
+              <Image 
+                withBorder
+                src={jsonFormat?.base64} 
+                opacity={baseImg ? "1" : "0"}
+                maxWidth="520px"
+                >
+              </Image>
+            </Box>
+          </Box>}
         </AppLayout>
       </Router>
     </ThemeProvider>
-
 }

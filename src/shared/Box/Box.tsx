@@ -48,7 +48,7 @@ interface IBox {
   className?: string
 }
 
-const Box: FC<IBox> = ({ children,  padding, margin,  bgColor,  bgImage, borderRadius,  height,  minHeight, width, flex, maxWidth, injectedStyles, className }) =>
+const Box: FC<IBox> = ({ children,  padding, margin, bgColor, bgImage, borderRadius, height, minHeight, width, flex, maxWidth, injectedStyles, className }) =>
   <BoxStyled
     padding={padding}
     margin={margin}

@@ -6,5 +6,4 @@ export const colors = {
   grayClear: "#EBF3FF",  
   white: "#FFFFFF",  
   dark: "#131416"
-
 }

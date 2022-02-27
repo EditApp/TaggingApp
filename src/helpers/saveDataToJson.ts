@@ -1,7 +1,7 @@
 //const fs = require('fs')
 
 export const saveDataToJson = (data: any) => {
-  const finished = (error) => {
+  const finished = (error: any) => {
     if(error){
       //console.log("error", error)
       return 

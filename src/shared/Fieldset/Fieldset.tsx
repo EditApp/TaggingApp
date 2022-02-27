@@ -2,19 +2,18 @@ import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 import { colors } from '../../appSettings/stylesSettings'
 
-
 interface FieldsetStyles {}
 
 export const FieldsetStyled = styled.fieldset<FieldsetStyles>`
-    padding: 20px;
-    background-color: ${colors.dust};
-    -webkit-box-shadow: 0 2px 10px 1px #0E1173;
-    box-shadow: 0 2px 10px 1px #0E1173;
+  padding: 20px;
+  background-color: ${colors.dust};
+  -webkit-box-shadow: 0 2px 10px 1px #0E1173;
+  box-shadow: 0 2px 10px 1px #0E1173;
 
-    input[type="submit"],
-    input[type="button"] {
-      width: 100%;
-    }
+  input[type="submit"],
+  input[type="button"] {
+    width: 100%;
+  }
 `
 
 const Legend = styled.legend`

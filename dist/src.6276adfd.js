@@ -34727,7 +34727,7 @@ var __1 = require("../");
 
 var stylesSettings_1 = require("../../appSettings/stylesSettings");
 
-var UploadStyled = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  position: relative;\n  bottom: 0px;\n  width: 100%;\n  background-color: ", ";\n  min-height: 520px;\n  max-height: 700px;\n  padding-bottom: 70px;\n  ", " {\n    > div {\n    width: 100%;\n    position: absolute;\n    bottom: 0px;\n    background-color: ", ";\n    border-top: 2px solid ", ";\n    margin-bottom: 0;\n    &.image {\n      background-color: ", ";\n      border-top: 0px solid;\n      position: relative;\n      width: calc(100% - 40px);\n    }\n  }\n\n  }\n"], ["\n  position: relative;\n  bottom: 0px;\n  width: 100%;\n  background-color: ", ";\n  min-height: 520px;\n  max-height: 700px;\n  padding-bottom: 70px;\n  ", " {\n    > div {\n    width: 100%;\n    position: absolute;\n    bottom: 0px;\n    background-color: ", ";\n    border-top: 2px solid ", ";\n    margin-bottom: 0;\n    &.image {\n      background-color: ", ";\n      border-top: 0px solid;\n      position: relative;\n      width: calc(100% - 40px);\n    }\n  }\n\n  }\n"])), stylesSettings_1.colors.white, __1.InputBoxStyled, stylesSettings_1.colors.grayClear, stylesSettings_1.colors.cherzBlue, stylesSettings_1.colors.white);
+var UploadStyled = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  position: relative;\n  bottom: 0px;\n  width: 100%;\n  background-color: ", ";\n  min-height: 520px;\n  max-height: 700px;\n  padding-bottom: 70px;\n  ", " {\n    > div {\n      width: 100%;\n      position: absolute;\n      bottom: 0px;\n      background-color: ", ";\n      border-top: 2px solid ", ";\n      margin-bottom: 0;\n      &.image {\n        background-color: ", ";\n        border-top: 0px solid;\n        position: relative;\n        width: calc(100% - 40px);\n      }\n    }\n  }\n"], ["\n  position: relative;\n  bottom: 0px;\n  width: 100%;\n  background-color: ", ";\n  min-height: 520px;\n  max-height: 700px;\n  padding-bottom: 70px;\n  ", " {\n    > div {\n      width: 100%;\n      position: absolute;\n      bottom: 0px;\n      background-color: ", ";\n      border-top: 2px solid ", ";\n      margin-bottom: 0;\n      &.image {\n        background-color: ", ";\n        border-top: 0px solid;\n        position: relative;\n        width: calc(100% - 40px);\n      }\n    }\n  }\n"])), stylesSettings_1.colors.white, __1.InputBoxStyled, stylesSettings_1.colors.grayClear, stylesSettings_1.colors.cherzBlue, stylesSettings_1.colors.white);
 
 var Upload = function Upload(_a) {
   var children = _a.children,
@@ -34848,7 +34848,7 @@ var styled_components_1 = __importDefault(require("styled-components"));
 
 var stylesSettings_1 = require("../../appSettings/stylesSettings");
 
-exports.FieldsetStyled = styled_components_1.default.fieldset(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    padding: 20px;\n    background-color: ", ";\n    -webkit-box-shadow: 0 2px 10px 1px #0E1173;\n    box-shadow: 0 2px 10px 1px #0E1173;\n\n    input[type=\"submit\"],\n    input[type=\"button\"] {\n      width: 100%;\n    }\n"], ["\n    padding: 20px;\n    background-color: ", ";\n    -webkit-box-shadow: 0 2px 10px 1px #0E1173;\n    box-shadow: 0 2px 10px 1px #0E1173;\n\n    input[type=\"submit\"],\n    input[type=\"button\"] {\n      width: 100%;\n    }\n"])), stylesSettings_1.colors.dust);
+exports.FieldsetStyled = styled_components_1.default.fieldset(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  padding: 20px;\n  background-color: ", ";\n  -webkit-box-shadow: 0 2px 10px 1px #0E1173;\n  box-shadow: 0 2px 10px 1px #0E1173;\n\n  input[type=\"submit\"],\n  input[type=\"button\"] {\n    width: 100%;\n  }\n"], ["\n  padding: 20px;\n  background-color: ", ";\n  -webkit-box-shadow: 0 2px 10px 1px #0E1173;\n  box-shadow: 0 2px 10px 1px #0E1173;\n\n  input[type=\"submit\"],\n  input[type=\"button\"] {\n    width: 100%;\n  }\n"])), stylesSettings_1.colors.dust);
 var Legend = styled_components_1.default.legend(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  color: ", ";\n  position: relative;\n  padding: 8px;\n  font-size: 1rem;\n  top: 16px;\n"], ["\n  color: ", ";\n  position: relative;\n  padding: 8px;\n  font-size: 1rem;\n  top: 16px;\n"])), stylesSettings_1.colors.dark);
 
 var Fieldset = function Fieldset(_a) {
@@ -35862,15 +35862,14 @@ var stylesSettings_1 = require("../../appSettings/stylesSettings");
 
 var __1 = require("../");
 
-exports.SvgPlaygroundStyled = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n//border: 3px solid green;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 25px;\n    right: 0;\n    ", " {\n      z-index: 3;\n    }\n    ", " {\n      position: absolute;\n      bottom: 25px;\n    }\n"], ["\n//border: 3px solid green;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 25px;\n    right: 0;\n    ", " {\n      z-index: 3;\n    }\n    ", " {\n      position: absolute;\n      bottom: 25px;\n    }\n"])), __1.InputStyled, __1.BoxStyled);
-var SvgStyled = styled_components_1.default.svg(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  //border: 3px solid red;\n  position: relative;\n  z-index: 2;\n  cursor: crosshair;\n  width: 100%;\n  height: 100%;\n  max-height: 450px;\n  \n"], ["\n  //border: 3px solid red;\n  position: relative;\n  z-index: 2;\n  cursor: crosshair;\n  width: 100%;\n  height: 100%;\n  max-height: 450px;\n  \n"])));
+exports.SvgPlaygroundStyled = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 25px;\n  right: 0;\n  ", " {\n    z-index: 3;\n  }\n  ", " {\n    position: absolute;\n    bottom: 25px;\n  }\n"], ["\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 25px;\n  right: 0;\n  ", " {\n    z-index: 3;\n  }\n  ", " {\n    position: absolute;\n    bottom: 25px;\n  }\n"])), __1.InputStyled, __1.BoxStyled);
+var SvgStyled = styled_components_1.default.svg(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  position: relative;\n  z-index: 2;\n  cursor: crosshair;\n  width: 100%;\n  height: 100%;\n  max-height: 450px;\n"], ["\n  position: relative;\n  z-index: 2;\n  cursor: crosshair;\n  width: 100%;\n  height: 100%;\n  max-height: 450px;\n"]))); // ca deviens un hook
 
 function useSvg() {
   var _a, _b, _c;
 
   var svgRef = (0, react_1.useRef)(null);
-  var svg = svgRef;
-  console.log("svg", svg); //state
+  var svg = svgRef; //console.log("svg", svg)
 
   var _d = (0, react_1.useState)(0),
       rectWidth = _d[0],
@@ -35911,22 +35910,21 @@ function useSvg() {
 
   (_a = svg === null || svg === void 0 ? void 0 : svg.current) === null || _a === void 0 ? void 0 : _a.onmousedown = function (_a) {
     var x = _a.x,
-        y = _a.y;
-    console.log("onmousedown");
-    console.log("x", x); // console.log("y", y)
+        y = _a.y; //console.log("onmousedown")
+    //console.log("x", x)
+    //console.log("y", y)
 
     setLastMousex(x);
-    setLastMousey(y); // console.log("lastMousex", lastMousex)
-    // console.log("lastMousey", lastMousey)
+    setLastMousey(y); //console.log("lastMousex", lastMousex)
+    //console.log("lastMousey", lastMousey)
 
     setMouseDown(true);
   }; //Mouseup
 
   (_b = svg === null || svg === void 0 ? void 0 : svg.current) === null || _b === void 0 ? void 0 : _b.onmouseup = function () {
-    console.log("onmouseup");
+    //console.log("onmouseup")
     setMouseDown(false);
   }; //Mousemove
-  //TODO add types to arguments
 
   (_c = svg === null || svg === void 0 ? void 0 : svg.current) === null || _c === void 0 ? void 0 : _c.onmousemove = function (_a) {
     var x = _a.x,
@@ -35934,8 +35932,8 @@ function useSvg() {
 
     if (mouseDown) {
       setMousex(parseInt(x));
-      setMousey(parseInt(y));
-      console.log("onmousemove");
+      setMousey(parseInt(y)); //console.log("onmousemove")
+
       setRectWidth(Math.abs(mousex - lastMousex));
       setRectHeight(Math.abs(mousex - lastMousex));
     }
@@ -35954,7 +35952,7 @@ function useSvg() {
   };
 
   var setTagObjects = function setTagObjects() {
-    console.log('set Object');
+    //console.log('set object')
     var newTagElement = {
       id: (0, uuid_1.v4)(),
       rectX: "".concat(lastMousex),
@@ -36035,14 +36033,7 @@ function useSvg() {
 }
 
 exports.default = useSvg;
-var templateObject_1, templateObject_2; //objectreact
-//rect.setAttributeNS(null, 'x', lastMousex);
-//rect.setAttributeNS(null, 'y', lastMousey);
-//rect.setAttributeNS(null, 'width', width);
-//rect.setAttributeNS(null, 'height', height);
-//rect.setAttributeNS(null, 'fill', "none");
-//rect.setAttributeNS(null, 'stroke', "black");
-//rect.setAttributeNS(null, 'stroke-width', 5);
+var templateObject_1, templateObject_2;
 },{"react":"../../node_modules/react/index.js","uuid":"../../node_modules/uuid/dist/esm-browser/index.js","styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js","../../appSettings/stylesSettings":"../appSettings/stylesSettings.ts","../":"../shared/index.ts"}],"../shared/ComputeRect/ComputeRect.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -36087,14 +36078,10 @@ var ComputeRect = function ComputeRect(_a) {
       strokeWidth = _a.strokeWidth,
       textX = _a.textX,
       textY = _a.textY,
-      textLabel = _a.textLabel; //const rectRef = useRef(null);
-  //todo perf
-  //console.log("rectRef", rectRef?.current)
-
+      textLabel = _a.textLabel;
   return react_1.default.createElement(RectStyled, {
     id: id
   }, react_1.default.createElement("rect", {
-    //ref={rectRef} 
     x: rectX,
     y: rectY,
     width: width,
@@ -36204,7 +36191,7 @@ Object.defineProperty(exports, "ImageStyled", {
   get: function get() {
     return Image_1.ImageStyled;
   }
-}); //import SvgPlayground from './SvgPlayground/SvgPlayground'
+});
 
 var useSvg_1 = __importStar(require("./SvgPlayground/useSvg"));
 
@@ -36705,13 +36692,12 @@ var saveDataToJson_1 = require("./helpers/saveDataToJson");
 
 var stylesSettings_1 = require("./appSettings/stylesSettings");
 
-var cssVariables_1 = require("./appSettings/cssVariables"); //context for tags
-
+var cssVariables_1 = require("./appSettings/cssVariables");
 
 var useSvg_1 = __importDefault(require("./shared/SvgPlayground/useSvg"));
 
 var CenteredButton = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  ", " {\n    display: block;\n    width: 100%;\n    max-width: 450px;\n    margin: 10px auto;\n  }\n"], ["\n  ", " {\n    display: block;\n    width: 100%;\n    max-width: 450px;\n    margin: 10px auto;\n  }\n"])), shared_1.InputStyled);
-var SvgStyled = styled_components_1.default.svg(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  //border: 3px solid red;\n  position: relative;\n  z-index: 2;\n  cursor: crosshair;\n  width: 100%;\n  height: 100%;\n  max-height: 450px;\n  \n"], ["\n  //border: 3px solid red;\n  position: relative;\n  z-index: 2;\n  cursor: crosshair;\n  width: 100%;\n  height: 100%;\n  max-height: 450px;\n  \n"])));
+var SvgStyled = styled_components_1.default.svg(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  position: relative;\n  z-index: 2;\n  cursor: crosshair;\n  width: 100%;\n  height: 100%;\n  max-height: 450px;\n"], ["\n  position: relative;\n  z-index: 2;\n  cursor: crosshair;\n  width: 100%;\n  height: 100%;\n  max-height: 450px;\n"])));
 
 function App() {
   var _this = this;
@@ -36838,7 +36824,7 @@ function App() {
     minHeight: "450px"
   }, console.log("TAGS:", __assign({
     tags: tags
-  })), console.log("JSON FOSM", jsonFormat === null || jsonFormat === void 0 ? void 0 : jsonFormat.tags), react_1.default.createElement(shared_1.SvgPlaygroundStyled, null, react_1.default.createElement(SvgStyled, null, (_a = jsonFormat === null || jsonFormat === void 0 ? void 0 : jsonFormat.tags) === null || _a === void 0 ? void 0 : _a.map(function (item) {
+  })), console.log("JSON", jsonFormat === null || jsonFormat === void 0 ? void 0 : jsonFormat.tags), react_1.default.createElement(shared_1.SvgPlaygroundStyled, null, react_1.default.createElement(SvgStyled, null, (_a = jsonFormat === null || jsonFormat === void 0 ? void 0 : jsonFormat.tags) === null || _a === void 0 ? void 0 : _a.map(function (item) {
     console.log("ITEM", item);
     var id = item.id,
         xPos = item.xPos,
@@ -36918,7 +36904,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56771" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53846" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

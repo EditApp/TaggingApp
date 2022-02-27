@@ -1,65 +1,43 @@
-import React, { FC, ReactNode, useState, useEffect , useRef} from 'react'
+import React, { FC, ReactNode, useState, useEffect, useRef} from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components'
 import { colors } from '../../appSettings/stylesSettings'
 import {Box, BoxStyled, Input, InputStyled, ComputeRect, Fieldset} from '../'
 
-
 interface SvgPlaygroundStyles {}
 
 export const SvgPlaygroundStyled = styled.div<SvgPlaygroundStyles>`
-//border: 3px solid green;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 25px;
+  right: 0;
+  ${InputStyled} {
+    z-index: 3;
+  }
+  ${BoxStyled} {
     position: absolute;
-    top: 0;
-    left: 0;
     bottom: 25px;
-    right: 0;
-    ${InputStyled} {
-      z-index: 3;
-    }
-    ${BoxStyled} {
-      position: absolute;
-      bottom: 25px;
-    }
+  }
 `
 
 const SvgStyled = styled.svg<SvgPlaygroundStyles>`
-  //border: 3px solid red;
   position: relative;
   z-index: 2;
   cursor: crosshair;
   width: 100%;
   height: 100%;
   max-height: 450px;
-  
 `
-
-
 
 interface ISvgPlayground {
 }
 
-interface IRect {
-  id: string
-  rectX? :string
-  rectY? : string
-  width? : any
-  height? : any
-  fill? : string
-  stroke? : string
-  strokeWidth?: number
-  textX? :any
-  textY? :any
-  textLabel?:string
-}
-
-
-
+// ca deviens un hook
 function useSvg() {
   const svgRef = useRef(null);
   const svg = svgRef
-    console.log("svg", svg)
-  //state
+  //console.log("svg", svg)
   let [rectWidth, setRectWidth] = useState(0)
   let [rectHeight, setRectHeight] = useState(0)
   let [lastMousex, setLastMousex] = useState(0)
@@ -72,29 +50,28 @@ function useSvg() {
 
   //Mousedown
   svg?.current?.onmousedown = ({x, y}) => {
-  console.log("onmousedown")
-  console.log("x", x)
-  // console.log("y", y)
+  //console.log("onmousedown")
+  //console.log("x", x)
+  //console.log("y", y)
     setLastMousex(x)
     setLastMousey(y)
-  // console.log("lastMousex", lastMousex)
-  // console.log("lastMousey", lastMousey)
+  //console.log("lastMousex", lastMousex)
+  //console.log("lastMousey", lastMousey)
     setMouseDown(true)
       
   }
 
   //Mouseup
   svg?.current?.onmouseup = () => {
-      console.log("onmouseup")
+    //console.log("onmouseup")
     setMouseDown(false)
   }
   //Mousemove
-  //TODO add types to arguments
   svg?.current?.onmousemove = ({x,y}) => {
     if (mouseDown) {
       setMousex(parseInt(x))
       setMousey(parseInt(y))
-        console.log("onmousemove")
+      //console.log("onmousemove")
       setRectWidth(Math.abs(mousex - lastMousex))
       setRectHeight(Math.abs(mousex - lastMousex))
     }
@@ -110,30 +87,28 @@ function useSvg() {
     setRectWidth(`${e.target.value}px`)
   })
   const setTagObjects=()=>{
-      console.log('set Object')
-      const newTagElement = {
-        id: uuidv4(),
-        rectX : `${lastMousex}`,
-        rectY : `${lastMousey}`,
-        width : `${rectWidth}`,
-        height : `${rectHeight}`,
-        fill : "none",
-        stroke : `${colors.gray}`,
-        strokeWidth: 8,
-        textLabel : rectText
-      }
+    //console.log('set object')
+    const newTagElement = {
+      id: uuidv4(),
+      rectX : `${lastMousex}`,
+      rectY : `${lastMousey}`,
+      width : `${rectWidth}`,
+      height : `${rectHeight}`,
+      fill : "none",
+      stroke : `${colors.gray}`,
+      strokeWidth: 8,
+      textLabel : rectText
+    }
     setTags([...tags, newTagElement])
     //console.log("tags", tags)
     setRectText("")
-  }), 
+  })
 
 
   return {
     tags,
     svgPlayground: (
-    <SvgPlaygroundStyled 
-    className={`SvgPlayground`}
-    >
+    <SvgPlaygroundStyled className={`SvgPlayground`}>
     <Box>
       <Fieldset legend="Ajoutez un tag">
         <Input label="Ajoutez un titre" type="text" position="relative"  onChange={tagText} />
@@ -173,13 +148,3 @@ function useSvg() {
 
 
 export default useSvg
-
-
-//objectreact
-    //rect.setAttributeNS(null, 'x', lastMousex);
-    //rect.setAttributeNS(null, 'y', lastMousey);
-    //rect.setAttributeNS(null, 'width', width);
-    //rect.setAttributeNS(null, 'height', height);
-    //rect.setAttributeNS(null, 'fill', "none");
-    //rect.setAttributeNS(null, 'stroke', "black");
-    //rect.setAttributeNS(null, 'stroke-width', 5);

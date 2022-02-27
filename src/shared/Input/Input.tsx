@@ -69,17 +69,17 @@ const Input: FC<IInput> = ({
   onClick, 
   onChange 
   }) => <InputBoxStyled>
-  <LabelStyled>{label}</LabelStyled>
-  <InputStyled className={`input ${className}`} 
-  type={type} 
-  value={value} 
-  position={position}
-  top={top}
-  left={left}
-  display={display}
-  onClick={onClick} 
-  onChange={onChange}
-  />
-</InputBoxStyled>
+    <LabelStyled>{label}</LabelStyled>
+    <InputStyled className={`input ${className}`} 
+    type={type} 
+    value={value} 
+    position={position}
+    top={top}
+    left={left}
+    display={display}
+    onClick={onClick} 
+    onChange={onChange}
+    />
+  </InputBoxStyled>
 
 export default Input
