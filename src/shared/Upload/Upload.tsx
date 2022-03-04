@@ -3,14 +3,16 @@ import styled from 'styled-components'
 import { Input, InputBoxStyled } from '../'
 import { colors } from '../../appSettings/stylesSettings'
 
-interface UploadStyles {}
+interface IUploadStyles {
+  minHeight?: string
+ }
 
-const UploadStyled = styled.div<UploadStyles>`
+const UploadStyled = styled.div<IUploadStyles>`
   position: relative;
   bottom: 0px;
   width: 100%;
   background-color: ${colors.white};
-  min-height: 520px;
+  min-height: ${props => props.minHeight};
   max-height: 700px;
   padding-bottom: 70px;
   ${InputBoxStyled} {
@@ -34,14 +36,15 @@ interface IUpload {
   type: string
   label?: string
   children?: ReactNode
+  minHeight?: string
   className?: string
   onChange?: (event: any) => void
 }
 
-const Upload: FC<IUpload> = ({ children, type, label, className, onChange }) =>
-  <UploadStyled className={`upload ${className}`}> 
+const Upload: FC<IUpload> = ({ children, type, label, minHeight, className, onChange }) =>
+  <UploadStyled className={`upload ${className}`} minHeight={minHeight}>
     {children}
-    <Input label={label} type={type} onChange={onChange}/>
+    <Input label={label} type={type} onChange={onChange} />
   </UploadStyled>
 
 export default Upload

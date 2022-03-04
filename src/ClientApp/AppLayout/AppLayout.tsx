@@ -1,8 +1,6 @@
 import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
-import { Content, Layout, Menu }  from '../layoutElements'
-import { Image , ImageStyled}  from '../../shared'
-import BgImg from '../../assets/mountains.jpeg'
+import { Content, Layout, Menu } from '../layoutElements'
 
 interface AppLayoutStyles {
 }
@@ -24,7 +22,7 @@ const AppLayout: FC<IAppLayout> = ({ children, className }) =>
     className={`appLayout ${className}`}
   >
     <Layout>
-    {/*<Menu></Menu>*/}
+      {/*<Menu></Menu>*/}
       <Content>
         {children}
       </Content>

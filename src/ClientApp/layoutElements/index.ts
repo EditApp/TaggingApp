@@ -3,7 +3,7 @@ import Layout from './Layout/Layout'
 import Menu from './Menu/Menu'
 
 export {
-    Content,
-    Layout,
-    Menu
+  Content,
+  Layout,
+  Menu
 }

@@ -2,7 +2,7 @@ import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 import { colors } from '../../appSettings/stylesSettings'
 
-interface FieldsetStyles {}
+interface FieldsetStyles { }
 
 export const FieldsetStyled = styled.fieldset<FieldsetStyles>`
   padding: 20px;
@@ -34,7 +34,7 @@ const Fieldset: FC<IFieldset> = ({ children, legend, className }) =>
   <FieldsetStyled
     className={`fieldset ${className}`}
   >
-  {legend && <Legend>{legend}</Legend>}
+    {legend && <Legend>{legend}</Legend>}
     {children}
   </FieldsetStyled>
 

@@ -5,13 +5,13 @@ export const convertBase64 = (file: any) => {
     const fileReader = new FileReader()
     //lecture de contenu :
     fileReader.readAsDataURL(file)
-    //console.log("fileReader", fileReader)
-    //operation de lecture ok
-    fileReader.onload = ()=>{
-      resolve(fileReader.result)
+    fileReader.onload = () => {
+      const { result } = fileReader;
+      resolve(result)
     }
     fileReader.onerror = (error: any) => {
       reject(error)
     }
   })
 }
+
