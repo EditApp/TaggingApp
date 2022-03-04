@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 
-interface MenuStyles {}
+interface MenuStyles { }
 //just for exmple of menu aside
 export const MenuStyled = styled.aside<MenuStyles>`
   max-width: 100px;

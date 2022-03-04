@@ -47,38 +47,38 @@ export const InputStyled = styled.input<InputStyles>`
 interface IInput {
   type: string
   label?: string
-  value: string
+  value?: string
   position?: string
   top?: string
   left?: string
-  left?: string
+  display?: string
   className?: string
   onClick?: (event: any) => void
   onChange?: (event: any) => void
 }
 
-const Input: FC<IInput> = ({ 
-  type, 
-  label, 
+const Input: FC<IInput> = ({
+  type,
+  label,
   value,
   position,
   top,
   left,
   display,
-  className, 
-  onClick, 
-  onChange 
-  }) => <InputBoxStyled>
+  className,
+  onClick,
+  onChange
+}) => <InputBoxStyled>
     <LabelStyled>{label}</LabelStyled>
-    <InputStyled className={`input ${className}`} 
-    type={type} 
-    value={value} 
-    position={position}
-    top={top}
-    left={left}
-    display={display}
-    onClick={onClick} 
-    onChange={onChange}
+    <InputStyled className={`input ${className}`}
+      type={type}
+      value={value}
+      position={position}
+      top={top}
+      left={left}
+      display={display}
+      onClick={onClick}
+      onChange={onChange}
     />
   </InputBoxStyled>
 

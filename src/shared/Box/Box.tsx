@@ -10,6 +10,7 @@ interface BoxStyles {
   height?: string
   width?: string
   maxWidth?: string
+  minHeight?: string
   flex?: boolean
   injectedStyles?: any
 }
@@ -21,8 +22,8 @@ export const BoxStyled = styled.div<BoxStyles>`
   background-repeat: no-repeat;
   display: ${props => props.flex ? "flex" : "block"};
   padding: ${props => props.padding};
-  margin: ${props =>  props.margin};
-  border-radius: ${props =>  props.borderRadius};
+  margin: ${props => props.margin};
+  border-radius: ${props => props.borderRadius};
   background-color: ${props => props.bgColor};
   background-image: ${props => props.bgImage};
   height: ${props => props.height};
@@ -37,10 +38,11 @@ interface IBox {
   children: ReactNode
   padding?: string
   margin?: string
+  borderRadius?: string
   bgColor?: string
   bgImage?: string
   height?: string
-  minHeight?: strig
+  minHeight?: string
   width?: string
   flex?: boolean
   maxWidth?: string
@@ -48,7 +50,7 @@ interface IBox {
   className?: string
 }
 
-const Box: FC<IBox> = ({ children,  padding, margin, bgColor, bgImage, borderRadius, height, minHeight, width, flex, maxWidth, injectedStyles, className }) =>
+const Box: FC<IBox> = ({ children, padding, margin, bgColor, bgImage, borderRadius, height, minHeight, width, flex, maxWidth, injectedStyles, className }) =>
   <BoxStyled
     padding={padding}
     margin={margin}
