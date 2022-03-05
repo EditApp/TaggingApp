@@ -37,8 +37,6 @@ const GlobalStyle = createGlobalStyle`
       z-index: -1;
     }
   }
-  
-
   a {
     text-decoration: none;
     color: inherit
