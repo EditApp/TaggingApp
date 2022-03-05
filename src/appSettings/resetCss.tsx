@@ -1,7 +1,5 @@
-  
-import { createGlobalStyle } from 'styled-components'
 
-import styleSettings from '../settings/styleSettings'
+import { createGlobalStyle } from 'styled-components'
 
 const ResetCss = createGlobalStyle`
   

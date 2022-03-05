@@ -3,12 +3,12 @@ import styled from 'styled-components'
 import { colors } from '../../appSettings/stylesSettings'
 
 interface ImageStyles {
-  height?: strig
-  width?: strig
-  maxHeight?: strig
-  maxWidth?: strig
+  height?: string
+  width?: string
+  maxHeight?: string
+  maxWidth?: string
   withBorder?: boolean
-  opacity?: boolean
+  opacity?: string
 }
 
 const ImageBox = styled.div<ImageStyles>`
@@ -30,11 +30,11 @@ interface IImage {
   children?: ReactNode
   className?: string
   src?: string
-  height?: strig
-  width?: strig
-  maxHeight?: strig
-  maxWidth?: strig
-  opacity?: strig
+  height?: string
+  width?: string
+  maxHeight?: string
+  maxWidth?: string
+  opacity?: string
   withBorder?: boolean
 }
 
@@ -42,7 +42,7 @@ const Image: FC<IImage> = ({ children, height, width, maxWidth, maxHeight, opaci
   <ImageBox
     className={`image ${className}`}
   >
-    <ImageStyled height={height} width={width} maxWidth={maxWidth} maxHeight={maxHeight} withBorder={withBorder} src={src} opacity={opacity}/>
+    <ImageStyled height={height} width={width} maxWidth={maxWidth} maxHeight={maxHeight} withBorder={withBorder} src={src} opacity={opacity} />
     {children}
   </ImageBox>
 
